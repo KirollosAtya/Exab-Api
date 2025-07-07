@@ -10,6 +10,7 @@ public  class DeleteCategoryHandler : IRequestHandler<DeleteCategoryCommand, boo
 
     public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
+        //Test Git
         var category = await _unitOfWork.Categories.GetById(request.Id, cancellationToken);
         if (category == null)
             return false;
