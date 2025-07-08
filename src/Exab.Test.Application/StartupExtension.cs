@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Exab.Test.Application;
-public static  class ApplicationDependencyinjection
+public static  class StartupExtension
 {
     public static void ConfigureApplicationService(this IServiceCollection services, IConfiguration configuration)
     {

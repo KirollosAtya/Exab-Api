@@ -1,4 +1,4 @@
-﻿namespace Exab.Test.Application.Modules.Category.Command.Update;
+﻿namespace Exab.Test.Application.Modules.Categories.Command.Update;
 public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryCommand, bool>
 {
     private readonly IUnitOfWork _unitOfWork;

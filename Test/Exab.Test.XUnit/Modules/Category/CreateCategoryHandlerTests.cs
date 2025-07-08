@@ -1,6 +1,7 @@
 ﻿
 using Exab.Test.Application.Interface;
-using Exab.Test.Application.Modules.Category.Command.Create;
+using Exab.Test.Application.Modules.Categories.Command.Create;
+
 using Exab.Test.Domain.Interfaces;
 using Moq;
 

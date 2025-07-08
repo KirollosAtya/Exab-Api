@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Exab.Test.Infrastructure;
-public static class DependancyInjection
+public static class StartupExtension
 {
     public static void ConfigureInfrastructureService(this IServiceCollection services
         , IConfiguration configuration)
@@ -23,7 +23,7 @@ public static class DependancyInjection
                 {
                     builder.EnableRetryOnFailure(7, TimeSpan.FromMilliseconds(750), null);
 
-                    builder.MigrationsAssembly(typeof(DependancyInjection).Assembly.GetName().Name);
+                    builder.MigrationsAssembly(typeof(StartupExtension).Assembly.GetName().Name);
                 });
         });
         #endregion

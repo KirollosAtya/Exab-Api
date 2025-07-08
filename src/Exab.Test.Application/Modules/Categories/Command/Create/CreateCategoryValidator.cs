@@ -1,4 +1,4 @@
-﻿namespace Exab.Test.Application.Modules.Category.Command.Create;
+﻿namespace Exab.Test.Application.Modules.Categories.Command.Create;
 public  class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
 {
     public CreateCategoryValidator()

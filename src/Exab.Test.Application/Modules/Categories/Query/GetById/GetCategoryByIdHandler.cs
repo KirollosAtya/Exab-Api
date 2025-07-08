@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Exab.Test.Application.Modules.Category.Query.GetById;
+namespace Exab.Test.Application.Modules.Categories.Query.GetById;
 public class GetCategoryByIdHandler : IRequestHandler<GetCategoryByIdQuery, Exab.Test.Domain.Entities.Category?>
 {
     private readonly IUnitOfWork _unitOfWork;

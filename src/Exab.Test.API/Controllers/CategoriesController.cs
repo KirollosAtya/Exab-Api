@@ -1,12 +1,4 @@
-﻿using Exab.Test.Application.Modules.Category.Command.Create;
-using Exab.Test.Application.Modules.Category.Command.Delete;
-using Exab.Test.Application.Modules.Category.Command.Update;
-using Exab.Test.Application.Modules.Category.Query.GetAll;
-using Exab.Test.Application.Modules.Category.Query.GetById;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Exab.Test.API.Controllers;
+﻿namespace Exab.Test.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class CategoriesController(IMediator _mediator) : ControllerBase

@@ -1,6 +1,6 @@
 ﻿using Exab.Test.Application.Interface;
 
-namespace Exab.Test.Application.Modules.Category.Command.Create;
+namespace Exab.Test.Application.Modules.Categories.Command.Create;
 public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, int>
 {
     private readonly IUnitOfWork _unitOfWork;

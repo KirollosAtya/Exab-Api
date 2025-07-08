@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Exab.Test.Application.Modules.Category.Command.Create;
+namespace Exab.Test.Application.Modules.Categories.Command.Create;
 public  class CreateCategoryCommand : IRequest<int>
 {
     public string Name { get; set; } 

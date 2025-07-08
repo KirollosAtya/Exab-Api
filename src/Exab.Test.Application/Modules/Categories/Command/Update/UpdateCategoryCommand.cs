@@ -1,4 +1,4 @@
-﻿namespace Exab.Test.Application.Modules.Category.Command.Update;
+﻿namespace Exab.Test.Application.Modules.Categories.Command.Update;
 public  class UpdateCategoryCommand : IRequest<bool>
 {
     public int Id { get; set; } 

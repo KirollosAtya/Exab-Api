@@ -1,5 +1,5 @@
-﻿namespace Exab.Test.Application.Modules.Category.Query.GetAll;
-public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, PaginatedResult<Exab.Test.Domain.Entities.Category>>
+﻿namespace Exab.Test.Application.Modules.Categories.Query.GetAll;
+public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, PaginatedResult<Category>>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -8,7 +8,7 @@ public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, Pa
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<PaginatedResult<Exab.Test.Domain.Entities.Category>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
+    public async Task<PaginatedResult<Category>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
     {
         var query = _unitOfWork.Categories.GetQueryable();
 

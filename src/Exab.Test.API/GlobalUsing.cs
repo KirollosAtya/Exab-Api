@@ -1,2 +1,9 @@
 ﻿global using Exab.Test.Infrastructure;
 global using Exab.Test.Application;
+global using Exab.Test.Application.Modules.Categories.Command.Create;
+global using Exab.Test.Application.Modules.Categories.Command.Delete;
+global using Exab.Test.Application.Modules.Categories.Command.Update;
+global using Exab.Test.Application.Modules.Categories.Query.GetAll;
+global using Exab.Test.Application.Modules.Categories.Query.GetById;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
