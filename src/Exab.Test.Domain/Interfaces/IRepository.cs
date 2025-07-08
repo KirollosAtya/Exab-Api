@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exab.Test.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -15,7 +16,7 @@ public  interface IRepository<T> where T :class
     void Update(T data);
 
     void Remove(T data);
-   
+    Task<int> Count();
 
- 
+    IQueryable<T> GetQueryable();
 }

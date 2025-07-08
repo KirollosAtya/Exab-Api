@@ -1,4 +1,5 @@
-﻿namespace Exab.Test.Infrastructure.Persistence.Repositories;
+﻿
+namespace Exab.Test.Infrastructure.Persistence.Repositories;
 public class BaseRepository<T>(ITestDbContext context) : IRepository<T> where T : BaseEntity
 {
     protected readonly DbSet<T> _dbSet = context.Set<T>();
@@ -29,6 +30,8 @@ public class BaseRepository<T>(ITestDbContext context) : IRepository<T> where T 
     public virtual void Update(T data) => _dbSet.Update(data);
     public virtual void Remove(T data) => _dbSet.Remove(data);
 
+    public virtual async Task<int> Count() => await _dbSet.CountAsync();
 
-  
+    public IQueryable<T> GetQueryable()=> _dbSet.AsQueryable();
+    
 }
