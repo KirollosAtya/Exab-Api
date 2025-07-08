@@ -22,8 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Exab.Test.Application\Exab.Test.Application.csproj" />
-    <ProjectReference Include="..\src\Exab.Test.Application\Exab.Test.Application.csproj" />
-    <ProjectReference Include="..\src\Exab.Test.Domain\Exab.Test.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Exab.Test.Domain\Exab.Test.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
