@@ -1,4 +1,6 @@
-﻿namespace Exab.Test.Infrastructure.Persistence;
+﻿using Exab.Test.Domain.Entities.UserManagement;
+
+namespace Exab.Test.Infrastructure.Persistence;
 
 public  class TestDbContext(DbContextOptions options) : DbContext(options) ,ITestDbContext,IDisposable
 {
@@ -6,7 +8,9 @@ public  class TestDbContext(DbContextOptions options) : DbContext(options) ,ITes
 
     public virtual DbSet<Category> Categories => Set<Category>();
     public virtual DbSet<Product> Products => Set<Product>();
-
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Role> Roles => Set<Role>();
+    public DbSet<UserRole> UserRoles => Set<UserRole>();
     public EntityEntry Entry<TEntity>(object entity) where TEntity : class => base.Entry(entity);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
