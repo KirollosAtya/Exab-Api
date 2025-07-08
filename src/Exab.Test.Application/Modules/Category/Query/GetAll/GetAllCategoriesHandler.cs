@@ -1,12 +1,4 @@
-﻿using Exab.Test.Application.Interface;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Exab.Test.Application.Modules.Category.Query.GetAll;
+﻿namespace Exab.Test.Application.Modules.Category.Query.GetAll;
 public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, PaginatedResult<Exab.Test.Domain.Entities.Category>>
 {
     private readonly IUnitOfWork _unitOfWork;
