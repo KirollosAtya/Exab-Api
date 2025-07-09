@@ -9,5 +9,6 @@ public interface IUnitOfWork : IDisposable
 {
     ICategoryRepository Categories { get; }
     IProductRepository Product { get; }
+    IUserRepository User { get; }
     Task CommitAsync(CancellationToken cancellationToken);
 }

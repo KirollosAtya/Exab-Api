@@ -1,9 +1,12 @@
-﻿namespace Exab.Test.API.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace Exab.Test.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class CategoriesController(IMediator _mediator) : ControllerBase
 {
     [HttpPost]
+    
     public virtual async Task<IActionResult> Create(CreateCategoryCommand request)
     {
         var result = await _mediator.Send(request);
@@ -30,6 +33,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
         return Ok(); 
     }
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAll([FromQuery] GetAllCategoriesQuery getAllCategoriesQuery)
     {
         var result = await _mediator.Send(getAllCategoriesQuery);

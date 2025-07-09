@@ -34,7 +34,7 @@ public class JwtProvider : IJwtProvider
         return (principal, validatedToken as JwtSecurityToken);
     }
 
-    public string GenerateTokens(User user)
+    public (string token, int expeireIn) GenerateTokens(User user)
     {
         Claim[] baseClaims = new Claim[]
                   {
@@ -44,7 +44,10 @@ public class JwtProvider : IJwtProvider
                     new Claim(JwtRegisteredClaimNames.PhoneNumber, user.PhoneNumber!)
                   };
 
-
+        //foreach (var userRole in user.UserRoles)
+        //{
+        //    baseClaims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name.ToString()));
+        //}
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -53,11 +56,11 @@ public class JwtProvider : IJwtProvider
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
             claims: baseClaims.ToArray(),
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpiration),
             signingCredentials: creds
         );
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        return (new JwtSecurityTokenHandler().WriteToken(token), _jwtSettings.AccessTokenExpiration);
 
     }
 }

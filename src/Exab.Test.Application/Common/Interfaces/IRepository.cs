@@ -10,7 +10,7 @@ namespace Exab.Test.Application.Common.Interfaces;
 public  interface IRepository<T> where T :class 
 {
     Task<T?> GetById(int id, CancellationToken cancellationToken, bool noTracking = false);
-   
+    IQueryable<T> Where(Expression<Func<T, bool>> predicate);
     Task<IEnumerable<T>> GetList(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
     Task<T> Insert(T data,CancellationToken cancellationToken);
     void Update(T data);

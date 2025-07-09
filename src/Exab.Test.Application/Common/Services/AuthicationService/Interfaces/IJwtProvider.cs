@@ -10,6 +10,6 @@ using System.Threading.Tasks;
 namespace Exab.Test.Application.Common.Services.AuthicationService.Interfaces;
 public  interface IJwtProvider
 {
-    public string GenerateTokens(User user);
+    public (string token ,int expeireIn) GenerateTokens(User user);
     public (ClaimsPrincipal, JwtSecurityToken) DecodeJwtToken(string token);
 }

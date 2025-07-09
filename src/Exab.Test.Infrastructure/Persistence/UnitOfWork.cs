@@ -10,12 +10,13 @@ public class UnitOfWork(ITestDbContext testDbContext) :IUnitOfWork
     private bool _disposed = false;
     private ICategoryRepository? _category;
     private IProductRepository? _product;
+    private IUserRepository? _user;
 
 
     public ICategoryRepository Categories => _category ??= new CategoryRepository(testDbContext);
     public IProductRepository Product => _product ??= new ProductRepository(testDbContext);
 
-
+    public IUserRepository User => _user ??= new UserRepository(testDbContext);
 
     public DbSet<TEntity> Set<TEntity>() where TEntity : class
     {
