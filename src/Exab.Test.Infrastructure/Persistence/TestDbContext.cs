@@ -1,4 +1,5 @@
-﻿using Exab.Test.Domain.Entities.UserManagement;
+﻿using Exab.Test.Application.Common.Interfaces;
+using Exab.Test.Domain.Entities.UserManagement;
 
 namespace Exab.Test.Infrastructure.Persistence;
 

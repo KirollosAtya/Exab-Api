@@ -1,4 +1,6 @@
-﻿namespace Exab.Test.Application.Modules.Categories.Query.GetAll;
+﻿using Exab.Test.Application.Common.Interfaces;
+
+namespace Exab.Test.Application.Modules.Categories.Query.GetAll;
 public class GetAllCategoriesHandler : IRequestHandler<GetAllCategoriesQuery, PaginatedResult<Category>>
 {
     private readonly IUnitOfWork _unitOfWork;

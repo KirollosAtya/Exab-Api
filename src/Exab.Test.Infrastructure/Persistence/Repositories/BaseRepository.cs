@@ -1,4 +1,6 @@
 ﻿
+using Exab.Test.Application.Common.Interfaces;
+
 namespace Exab.Test.Infrastructure.Persistence.Repositories;
 public class BaseRepository<T>(ITestDbContext context) : IRepository<T> where T : BaseEntity
 {

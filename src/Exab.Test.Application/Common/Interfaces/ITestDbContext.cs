@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 
-namespace Exab.Test.Domain.Interfaces;
+namespace Exab.Test.Application.Common.Interfaces;
 public  interface ITestDbContext : IDisposable 
 {
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

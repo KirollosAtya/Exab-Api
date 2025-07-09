@@ -1,4 +1,6 @@
-﻿namespace Exab.Test.Application.Modules.Categories.Command.Delete;
+﻿using Exab.Test.Application.Common.Interfaces;
+
+namespace Exab.Test.Application.Modules.Categories.Command.Delete;
 public  class DeleteCategoryHandler : IRequestHandler<DeleteCategoryCommand, bool>
 {
     private readonly IUnitOfWork _unitOfWork;

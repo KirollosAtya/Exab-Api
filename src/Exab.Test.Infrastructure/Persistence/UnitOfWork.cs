@@ -1,4 +1,4 @@
-﻿using Exab.Test.Application.Interface;
+﻿using Exab.Test.Application.Common.Interfaces;
 using Exab.Test.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;

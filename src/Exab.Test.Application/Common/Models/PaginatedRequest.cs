@@ -1,4 +1,4 @@
-﻿namespace Exab.Test.Application.Modules;
+﻿namespace Exab.Test.Application.Common.Models;
 public  class PaginatedRequest
 {
     public string? Search { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exab.Test.Domain.Interfaces;
+namespace Exab.Test.Application.Common.Interfaces;
 public  interface IProductRepository : IRepository<Product>
 {
 }

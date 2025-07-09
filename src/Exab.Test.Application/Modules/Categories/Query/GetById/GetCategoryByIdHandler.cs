@@ -1,5 +1,7 @@
 ﻿
 
+using Exab.Test.Application.Common.Interfaces;
+
 namespace Exab.Test.Application.Modules.Categories.Query.GetById;
 public class GetCategoryByIdHandler : IRequestHandler<GetCategoryByIdQuery, Exab.Test.Domain.Entities.Category?>
 {

@@ -1,9 +1,4 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-
-namespace Exab.Test.Application;
+﻿namespace Exab.Test.Application;
 public static  class StartupExtension
 {
     public static void ConfigureApplicationService(this IServiceCollection services, IConfiguration configuration)
@@ -11,5 +6,20 @@ public static  class StartupExtension
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddFluentValidationAutoValidation();
+        services.AddAuthenticationConfiguration(configuration);
+
+    }
+
+    private static IServiceCollection AddAuthenticationConfiguration(this IServiceCollection services, IConfiguration configuration)
+    {
+         services.Configure<JwtSettings>( configuration.GetSection("jwtSettings"));
+
+         services.AddSingleton(sp =>
+
+         sp.GetRequiredService<IOptions<JwtSettings>>().Value);
+
+         services.AddSingleton<IJwtProvider, JwtProvider>();
+
+        return services;
     }
 }

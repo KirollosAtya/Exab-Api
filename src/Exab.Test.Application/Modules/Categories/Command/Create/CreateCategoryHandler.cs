@@ -1,4 +1,4 @@
-﻿using Exab.Test.Application.Interface;
+﻿using Exab.Test.Application.Common.Interfaces;
 
 namespace Exab.Test.Application.Modules.Categories.Command.Create;
 public class CreateCategoryHandler : IRequestHandler<CreateCategoryCommand, int>

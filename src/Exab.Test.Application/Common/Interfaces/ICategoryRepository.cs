@@ -1,7 +1,7 @@
 ﻿using Exab.Test.Domain.Entities;
 
 
-namespace Exab.Test.Domain.Interfaces;
+namespace Exab.Test.Application.Common.Interfaces;
 public  interface ICategoryRepository : IRepository<Category>
 {
 }

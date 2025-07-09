@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exab.Test.Domain.Interfaces;
+namespace Exab.Test.Application.Common.Interfaces;
 public  interface IRepository<T> where T :class 
 {
     Task<T?> GetById(int id, CancellationToken cancellationToken, bool noTracking = false);
