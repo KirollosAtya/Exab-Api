@@ -1,4 +1,5 @@
 ﻿using Exab.Test.Application.Modules.Login.Command.Login;
+using Exab.Test.Domain.Constants;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,4 +14,5 @@ public class AuthenticationController(IMediator _mediator) : ControllerBase
         var result = await _mediator.Send(request);
         return Ok(result);
     }
+  
 }

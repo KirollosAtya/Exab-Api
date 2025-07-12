@@ -8,5 +8,9 @@ public class RoleConfigration : IEntityTypeConfiguration<Role>
     {
         builder.HasKey(c => c.Id);
         builder.Property(c => c.Name).HasMaxLength(250);
+
+        builder.HasMany(r => r.Claims)
+               .WithOne(rc => rc.Role)
+               .HasForeignKey(rc => rc.RoleId);
     }
 }
