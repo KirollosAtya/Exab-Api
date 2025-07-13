@@ -6,4 +6,8 @@ public  class RolePermission : BaseEntity
 
     public string ClaimType { get; set; } = string.Empty;
     public string ClaimValue { get; set; } = string.Empty;
+
+    public string Resource { get; set; } = string.Empty; 
+    public string Action { get; set; } = string.Empty;   
+    public string Permission { get; set; } = string.Empty;
 }

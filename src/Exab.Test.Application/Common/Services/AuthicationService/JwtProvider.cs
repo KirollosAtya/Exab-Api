@@ -1,4 +1,8 @@
-﻿namespace Exab.Test.Application.Common.Services.AuthicationService;
+﻿using Exab.Test.Domain.Constants;
+using Exab.Test.Domain.Entities.UserManagement;
+using System.Security.Claims;
+
+namespace Exab.Test.Application.Common.Services.AuthicationService;
 public class JwtProvider : IJwtProvider
 {
    
@@ -36,18 +40,24 @@ public class JwtProvider : IJwtProvider
 
     public (string token, int expeireIn) GenerateTokens(User user)
     {
-        Claim[] baseClaims = new Claim[]
-                  {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Name, user.Username!),
-                    new Claim(JwtRegisteredClaimNames.Email, user.Email!),
-                    new Claim(JwtRegisteredClaimNames.PhoneNumber, user.PhoneNumber!)
-                  };
+        List<Claim> claims = new()
+                            {
+                                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                                new Claim(JwtRegisteredClaimNames.Name, user.Username!),
+                                new Claim(JwtRegisteredClaimNames.Email, user.Email!),
+                                new Claim(JwtRegisteredClaimNames.PhoneNumber, user.PhoneNumber!)
+                            };
 
-        //foreach (var userRole in user.UserRoles)
-        //{
-        //    baseClaims.Add(new Claim(ClaimTypes.Role, userRole.Role.Name.ToString()));
-        //}
+        var roles = user.UserRoles.Select(ur => ur.Role.Name).ToList();
+        var permissions = user.UserRoles
+        .SelectMany(ur => ur.Role.Claims)
+        .Select(rp => rp.Permission)
+        .Distinct()
+        .ToList();
+        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+        
+        claims.AddRange(permissions.Select(p => new Claim("permission", p)));
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret!));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -55,7 +65,7 @@ public class JwtProvider : IJwtProvider
         var token = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
-            claims: baseClaims.ToArray(),
+            claims: claims.ToArray(),
             expires: DateTime.UtcNow.AddMinutes(_jwtSettings.AccessTokenExpiration),
             signingCredentials: creds
         );

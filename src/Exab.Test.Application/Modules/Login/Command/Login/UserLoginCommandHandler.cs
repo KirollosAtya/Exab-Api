@@ -36,7 +36,12 @@ public class UserLoginCommandHandler : IRequestHandler<UserLoginCommand, UserLog
         //return userLoginDto; 
         #endregion
 
-        var user = await  _unitOfWork.User.Where(c=>c.Username==request.Username).FirstOrDefaultAsync(cancellationToken);
+        var user = await _unitOfWork.User
+                                             .Where(u => u.Username == request.Username)
+                                             .Include(u => u.UserRoles)
+                                                 .ThenInclude(ur => ur.Role)
+                                                     .ThenInclude(r => r.Claims) 
+                                             .FirstOrDefaultAsync(cancellationToken);
 
         ArgumentNullException.ThrowIfNull(user, "UserName Or Password InValid");
 

@@ -2,7 +2,7 @@
 using Exab.Test.Domain.Entities.UserManagement;
 
 namespace Exab.Test.Infrastructure.Persistence.Configurations.UserMangementConfigration;
-public  class RolePermissionConfigration : IEntityTypeConfiguration<RolePermission>
+public class RolePermissionConfigration : IEntityTypeConfiguration<RolePermission>
 {
     public void Configure(EntityTypeBuilder<RolePermission> builder)
     {
@@ -13,7 +13,10 @@ public  class RolePermissionConfigration : IEntityTypeConfiguration<RolePermissi
         builder.HasOne(rc => rc.Role)
                .WithMany(r => r.Claims)
                .HasForeignKey(rc => rc.RoleId);
-        var permisions=Permissions.GetAllPermissions();
+        builder.Property(rp => rp.Resource).IsRequired().HasMaxLength(50);
+        builder.Property(rp => rp.Action).IsRequired().HasMaxLength(50);
+        builder.Property(rp => rp.Permission).IsRequired().HasMaxLength(100);
+        var permisions = Permissions.GetAllPermissions();
         for (int i = 0; i < permisions.Count; i++)
         {
 

@@ -12,5 +12,8 @@ public class RoleConfigration : IEntityTypeConfiguration<Role>
         builder.HasMany(r => r.Claims)
                .WithOne(rc => rc.Role)
                .HasForeignKey(rc => rc.RoleId);
+
+
+
     }
 }

@@ -10,13 +10,15 @@ public static  class StartupExtension
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddFluentValidationAutoValidation();
+       
+
         services.AddAuthenticationConfiguration(configuration);
 
     }
 
     private static IServiceCollection AddAuthenticationConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IPasswordHasher, PasswordHasher>();
+     
         var jwtSettings = configuration.GetSection(nameof(JwtSettings)).Get<JwtSettings>();
         services.Configure<JwtSettings>( configuration.GetSection(nameof(JwtSettings)));
 
