@@ -35,14 +35,14 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
         return Ok(); 
     }
     [HttpGet]
-    [Authorize(Policy = "Permission:Category.Read")]
+    [Authorize(Policy = "Category.Read")]
     public async Task<IActionResult> GetAll([FromQuery] GetAllCategoriesQuery getAllCategoriesQuery)
     {
         var result = await _mediator.Send(getAllCategoriesQuery);
         return Ok(result);
     }
     [HttpGet("{id}")]
-    [Authorize(Policy = "Permission:Category.Read")]
+    [Authorize(Policy = "Category.Read")]
     public async Task<IActionResult> GetById(int id)
     {
         var result = await _mediator.Send(new GetCategoryByIdQuery(id));
