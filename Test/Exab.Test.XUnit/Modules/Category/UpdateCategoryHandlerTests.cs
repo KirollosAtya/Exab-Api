@@ -1,7 +1,5 @@
-﻿using Exab.Test.Application.Interface;
-using Exab.Test.Application.Modules.Category.Command.Create;
-using Exab.Test.Application.Modules.Category.Command.Update;
-using Exab.Test.Domain.Interfaces;
+﻿using Exab.Test.Application.Common.Interfaces;
+using Exab.Test.Application.Modules.Categories.Command.Update;
 using Moq;
 using System;
 using System.Collections.Generic;
